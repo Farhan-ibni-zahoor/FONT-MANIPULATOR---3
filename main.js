@@ -1,3 +1,7 @@
+difference = 0;
+rightwristX = 0;
+leftwristX = 0;
+
 function setup() {
     video = createCapture(VIDEO);
     video.size(400,400);
@@ -21,9 +25,11 @@ function gotposes(results,error){
     }
     if(results.length > 0){
         console.log(results);
+        leftwristX = results[0].pose.leftwrist.x;
+        rightwristX = results[0].pose.rightwrist.x;
+        difference = floor(leftwristX - rightwrist);
 
-        console.log("rightWrist_x = "+results[0].pose.rightWrist.x + " rightWrist_y = "+results[0].pose.rightWrist.y);
-        console.log("leftWrist_x = "+results[0].pose.leftWrist.x + " leftWrist_y = "+results[0].pose.leftWrist.y);
+       
     }
 }
 
